@@ -158,3 +158,4 @@ void cetakArray(){
     hapusElemenTerakhir();
     cetakSingleArray();
 }
+/*satria*/
