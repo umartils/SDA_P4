@@ -9,9 +9,6 @@ int harga[MAX_SIZE];
 string rasa[MAX_SIZE];
 int currentSize = 0; // Jumlah elemen saat ini
 
-/*
- * Prototipe Fungsi
- */
 void buatElemen(string, string, float, int, string);
 void masukanElemenKeAwal(string, string, float, int, string);
 void masukanElemenKeAkhir(string, string, float, int, string);
@@ -22,9 +19,6 @@ void hapusElemenTerakhir();
 void cetakSingleArray();
 void cetakSeluruhAtributElemen();
 
-/*
- * Fungsi Utama
- */
 int main() {
     /* Membuat elemen pertama */
     cout << endl << "01. Membuat Elemen Pertama:" << endl;
@@ -62,24 +56,20 @@ int main() {
     cetakSingleArray();
 
     return 0;
-} // Akhir dari main
+} 
 
-/*
- * Fungsi
- */
-
-void buatElemen(string n, string w, float b, int h, string r) {
+void buatElemen(string a, string b, float c, int d, string e) {
     if (currentSize < MAX_SIZE) {
-        nama[currentSize] = n;
-        warna[currentSize] = w;
-        berat[currentSize] = b;
-        harga[currentSize] = h;
-        rasa[currentSize] = r;
+        nama[currentSize] = a;
+        warna[currentSize] = b;
+        berat[currentSize] = c;
+        harga[currentSize] = d;
+        rasa[currentSize] = e;
         currentSize++;
     }
 }
 
-void masukanElemenKeAwal(string n, string w, float b, int h, string r) {
+void masukanElemenKeAwal(string a, string b, float c, int d, string e) {
     if (currentSize < MAX_SIZE) {
         for (int i = currentSize; i > 0; i--) {
             nama[i] = nama[i - 1];
@@ -88,44 +78,44 @@ void masukanElemenKeAwal(string n, string w, float b, int h, string r) {
             harga[i] = harga[i - 1];
             rasa[i] = rasa[i - 1];
         }
-        nama[0] = n;
-        warna[0] = w;
-        berat[0] = b;
-        harga[0] = h;
-        rasa[0] = r;
+        nama[0] = a;
+        warna[0] = b;
+        berat[0] = c;
+        harga[0] = d;
+        rasa[0] = e;
         currentSize++;
     }
 }
 
-void masukanElemenKeAkhir(string n, string w, float b, int h, string r) {
+void masukanElemenKeAkhir(string a, string b, float c, int d, string e) {
     if (currentSize < MAX_SIZE) {
-        nama[currentSize] = n;
-        warna[currentSize] = w;
-        berat[currentSize] = b;
-        harga[currentSize] = h;
-        rasa[currentSize] = r;
+        nama[currentSize] = a;
+        warna[currentSize] = b;
+        berat[currentSize] = c;
+        harga[currentSize] = d;
+        rasa[currentSize] = e;
         currentSize++;
     }
 }
 
-void rubahDataElemenPertama(string n, string w, float b, int h, string r) {
+void rubahDataElemenPertama(string a, string b, float c, int d, string e) {
     if (currentSize > 0) {
-        nama[0] = n;
-        warna[0] = w;
-        berat[0] = b;
-        harga[0] = h;
-        rasa[0] = r;
+        nama[0] = a;
+        warna[0] = b;
+        berat[0] = c;
+        harga[0] = d;
+        rasa[0] = e;
     }
 }
 
-void rubahDataElemenTerakhir(string n, string w, float b, int h, string r) {
+void rubahDataElemenTerakhir(string a, string b, float c, int d, string e) {
     if (currentSize > 0) {
         int lastIndex = currentSize - 1;
-        nama[lastIndex] = n;
-        warna[lastIndex] = w;
-        berat[lastIndex] = b;
-        harga[lastIndex] = h;
-        rasa[lastIndex] = r;
+        nama[lastIndex] = a;
+        warna[lastIndex] = b;
+        berat[lastIndex] = c;
+        harga[lastIndex] = d;
+        rasa[lastIndex] = e;
     }
 }
 
