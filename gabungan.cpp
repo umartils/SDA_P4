@@ -5,16 +5,18 @@
 using namespace std;
 using namespace std::chrono;
 
-// deklarasi struct 
-struct buah{
- string nama;
- string warna;
- float berat;
- int harga;
- string rasa;
- // pointer untuk menghubungkan node
- buah *next;
-}; buah *head, *tail, *nodeSekarang, *nodeBaru, *temporaryNode;
+// deklarasi struct
+struct buah
+{
+    string nama;
+    string warna;
+    float berat;
+    int harga;
+    string rasa;
+    // pointer untuk menghubungkan node
+    buah *next;
+};
+buah *head, *tail, *nodeSekarang, *nodeBaru, *temporaryNode;
 
 // deklarasi array
 const int MAX_SIZE = 100; // Batas maksimum jumlah elemen
@@ -53,179 +55,220 @@ void waktuArray();
 void ukurMemoriLinkedList();
 void ukurMemoriArray();
 
-int main(){
- cout << "\nHasil Linked List\n";
- cout << "====================================================";
- waktuLinkedList();
- cout << "====================================================";
- cout << "\n\nHasil Array\n";
- cout << "====================================================";
- waktuArray();
- return 0;
-} 
+int main()
+{
+    cout << "\nHasil Linked List\n";
+    cout << "====================================================";
+    waktuLinkedList();
+    cout << "====================================================";
+    cout << "\n\nHasil Array\n";
+    cout << "====================================================";
+    waktuArray();
+    return 0;
+}
 
-void buatSingleLinkedList(string nama, string warna, float berat, int harga, string rasa){
- // membuat node pertama kali
- head = new buah();
- head->nama = nama;
- head->warna = warna;
- head->berat = berat;
- head->harga = harga;
- head->rasa = rasa;
- // maka node tersebut akan jadi head dan tail
- head->next = NULL;
- tail = head;
+void buatSingleLinkedList(string nama, string warna, float berat, int harga, string rasa)
+{
+    // membuat node pertama kali
+    head = new buah();
+    head->nama = nama;
+    head->warna = warna;
+    head->berat = berat;
+    head->harga = harga;
+    head->rasa = rasa;
+    // maka node tersebut akan jadi head dan tail
+    head->next = NULL;
+    tail = head;
 }
 // fungsi membuat node di awal
-void masukanNodeKeAwal(string nama, string warna, float berat, int harga, string rasa){
- // buat node baru
- nodeBaru = new buah();
- nodeBaru->nama = nama;
- nodeBaru->warna = warna;
- nodeBaru->berat = berat;
- nodeBaru->harga = harga;
- nodeBaru->rasa = rasa;
- // node baru di awal menunjuk ke head
- nodeBaru->next = head;
- // tukar head menjadi yang node baru
- // maka sekarang head adalah node baru
- head = nodeBaru;
+void masukanNodeKeAwal(string nama, string warna, float berat, int harga, string rasa)
+{
+    // buat node baru
+    nodeBaru = new buah();
+    nodeBaru->nama = nama;
+    nodeBaru->warna = warna;
+    nodeBaru->berat = berat;
+    nodeBaru->harga = harga;
+    nodeBaru->rasa = rasa;
+    // node baru di awal menunjuk ke head
+    nodeBaru->next = head;
+    // tukar head menjadi yang node baru
+    // maka sekarang head adalah node baru
+    head = nodeBaru;
 }
 // fungsi membuat node di akhir
-void masukanNodeKeAkhir(string nama, string warna, float berat, int harga, string rasa){
- // membuat node baru
- nodeBaru = new buah();
- nodeBaru->nama = nama;
-nodeBaru->warna = warna;
- nodeBaru->berat = berat;
- nodeBaru->harga = harga;
- nodeBaru->rasa = rasa;
- // node di akhir harus menunjuk null
- nodeBaru->next = NULL;
- // node yang sebelumnya tail harus ditunjuk ke node baru
- tail->next = nodeBaru;
- // maka sekarang tail adalah node baru
- tail = nodeBaru;
+void masukanNodeKeAkhir(string nama, string warna, float berat, int harga, string rasa)
+{
+    // membuat node baru
+    nodeBaru = new buah();
+    nodeBaru->nama = nama;
+    nodeBaru->warna = warna;
+    nodeBaru->berat = berat;
+    nodeBaru->harga = harga;
+    nodeBaru->rasa = rasa;
+    // node di akhir harus menunjuk null
+    nodeBaru->next = NULL;
+    // node yang sebelumnya tail harus ditunjuk ke node baru
+    tail->next = nodeBaru;
+    // maka sekarang tail adalah node baru
+    tail = nodeBaru;
 }
 // fungsi rubah data node pertama
-void rubahDataNodePertama(string nama, string warna, float berat, int harga, string rasa){
- head->nama = nama;
- head->warna = warna;
- head->berat = berat;
- head->harga = harga;
- head->rasa = rasa;
+void rubahDataNodePertama(string nama, string warna, float berat, int harga, string rasa)
+{
+    head->nama = nama;
+    head->warna = warna;
+    head->berat = berat;
+    head->harga = harga;
+    head->rasa = rasa;
 }
 // fungsi rubah data node terakhir
-void rubahDataNodeTerakhir(string nama, string warna, float berat, int harga, string rasa){
- // ubah data node terakhir
- tail->nama = nama;
- tail->warna = warna;
- tail->berat = berat;
- tail->harga = harga;
- tail->rasa = rasa;
+void rubahDataNodeTerakhir(string nama, string warna, float berat, int harga, string rasa)
+{
+    // ubah data node terakhir
+    tail->nama = nama;
+    tail->warna = warna;
+    tail->berat = berat;
+    tail->harga = harga;
+    tail->rasa = rasa;
 }
 // fungsi hapus node pertama
-void hapusNodePertama(){
- // simpan node head ke node sementara
- temporaryNode = head;
- // node head diganti dengan node selanjutnya
- head = head->next;
- delete temporaryNode;
+void hapusNodePertama()
+{
+    // simpan node head ke node sementara
+    temporaryNode = head;
+    // node head diganti dengan node selanjutnya
+    head = head->next;
+    delete temporaryNode;
 }
 // fungsi hapus node terakhir
-void hapusNodeTerakhir(){
- // simpan node tail ke node sementara
- temporaryNode = tail;
- // mencari nodetail
- // pencarian dimulai dari head
- nodeSekarang = head;
- while (nodeSekarang->next != NULL){
- // jika node sekarang itu next nodenya adalah tail
- // eksekusi
- if(nodeSekarang->next == tail){
- // node sekarang jadi tail
-// dengan membuah next dari node sekarang menjadi null bukan ke node lain
- nodeSekarang->next = NULL;
- // maka tail dirubah node sekarang
- tail = nodeSekarang;
- } else {
- // jika tidak maka current Node diganti dengan node selanjutnya
- nodeSekarang = nodeSekarang->next;
- }
- }
- delete temporaryNode;
+void hapusNodeTerakhir()
+{
+    // simpan node tail ke node sementara
+    temporaryNode = tail;
+    // mencari nodetail
+    // pencarian dimulai dari head
+    nodeSekarang = head;
+    while (nodeSekarang->next != NULL)
+    {
+        // jika node sekarang itu next nodenya adalah tail
+        // eksekusi
+        if (nodeSekarang->next == tail)
+        {
+            // node sekarang jadi tail
+            // dengan membuah next dari node sekarang menjadi null bukan ke node lain
+            nodeSekarang->next = NULL;
+            // maka tail dirubah node sekarang
+            tail = nodeSekarang;
+        }
+        else
+        {
+            // jika tidak maka current Node diganti dengan node selanjutnya
+            nodeSekarang = nodeSekarang->next;
+        }
+    }
+    delete temporaryNode;
 }
 // fungsi cetak linked list
-void cetakSingleLinkedList(){
- // dimulai dari node head
- nodeSekarang = head;
- while (nodeSekarang != NULL){
- cout << nodeSekarang->nama << " >> ";
- // geser ke node selanjutnya
- nodeSekarang = nodeSekarang->next;
- } cout << "!!\n";
+void cetakSingleLinkedList()
+{
+    // dimulai dari node head
+    nodeSekarang = head;
+    while (nodeSekarang != NULL)
+    {
+        cout << nodeSekarang->nama << " >> ";
+        // geser ke node selanjutnya
+        nodeSekarang = nodeSekarang->next;
+    }
+    cout << "!!\n";
 }
 // fungsi cetak seluruh data node linked list
-void cetakSeluruhAtributNode(){
- // dimulai dari node head
- nodeSekarang = head;
- while (nodeSekarang != NULL){
- cout << "nama: " << nodeSekarang->nama << endl;
- cout << "warna: " << nodeSekarang->warna << endl;
- cout << "berat: " << nodeSekarang->berat << endl;
- cout << "harga: " << nodeSekarang->harga << endl;
- cout << "rasa: " << nodeSekarang->rasa << endl;
- cout << endl;
- nodeSekarang = nodeSekarang->next;
- }
+void cetakSeluruhAtributNode()
+{
+    // dimulai dari node head
+    nodeSekarang = head;
+    while (nodeSekarang != NULL)
+    {
+        cout << "nama: " << nodeSekarang->nama << endl;
+        cout << "warna: " << nodeSekarang->warna << endl;
+        cout << "berat: " << nodeSekarang->berat << endl;
+        cout << "harga: " << nodeSekarang->harga << endl;
+        cout << "rasa: " << nodeSekarang->rasa << endl;
+        cout << endl;
+        nodeSekarang = nodeSekarang->next;
+    }
 }
 
-void cetakLinkedList(){
+void cetakLinkedList()
+{
 
+    cout << endl
+         << "01. Membuat Node Pertama:" << endl;
+    buatSingleLinkedList("Mangga", "Jingga", 1.1, 10000, "Manis");
+    cetakSingleLinkedList(); // menampilkan node
 
- cout << endl << "01. Membuat Node Pertama:" << endl;
- buatSingleLinkedList("Mangga", "Jingga", 1.1, 10000, "Manis");
- cetakSingleLinkedList(); // menampilkan node
- 
- cout << endl << "02. Menambahkan node pada posisi awal:" << endl;
- masukanNodeKeAwal("Pisang", "Kuning", 1.3, 8000, "Manis");
- cetakSingleLinkedList(); // menampilkan node
+    cout << endl
+         << "02. Menambahkan node pada posisi awal:" << endl;
+    masukanNodeKeAwal("Pisang", "Kuning", 1.3, 8000, "Manis");
+    cetakSingleLinkedList(); // menampilkan node
 
- cout << endl << "03. Menambahkan node pada posisi akhir:" << endl;
- masukanNodeKeAkhir("Apel", "Merah", 2.1, 13000, "Manis");
- cetakSingleLinkedList(); // menampilkan node
- 
- cout << endl << "04. Menambahkan node pada posisi awal lagi:" << endl;
- masukanNodeKeAwal("Anggur", "Ungu", 1, 9000, "Manis");
- cetakSingleLinkedList(); // menampilkan node
+    cout << endl
+         << "03. Menambahkan node pada posisi akhir:" << endl;
+    masukanNodeKeAkhir("Apel", "Merah", 2.1, 13000, "Manis");
+    cetakSingleLinkedList(); // menampilkan node
 
- cout << endl << "05. menghapus node pada posisi awal:" << endl;
- hapusNodePertama();
- cetakSingleLinkedList();
- 
- cout << endl << "06. menghapus node pada posisi akhir:" << endl;
- hapusNodeTerakhir();
- cetakSingleLinkedList();
- 
- cout << endl << "07. menghapus node pada posisi akhir:" << endl;
- hapusNodeTerakhir();
- cetakSingleLinkedList();
+    cout << endl
+         << "04. Menambahkan node pada posisi awal lagi:" << endl;
+    masukanNodeKeAwal("Anggur", "Ungu", 1, 9000, "Manis");
+    cetakSingleLinkedList(); // menampilkan node
 
+    cout << endl
+         << "05. menghapus node pada posisi awal:" << endl;
+    hapusNodePertama();
+    cetakSingleLinkedList();
+
+    cout << endl
+         << "06. menghapus node pada posisi akhir:" << endl;
+    hapusNodeTerakhir();
+    cetakSingleLinkedList();
+
+    cout << endl
+         << "07. menghapus node pada posisi akhir:" << endl;
+    hapusNodeTerakhir();
+    cetakSingleLinkedList();
+
+    /* menambahkan node di awal*/
+    cout << endl
+         << "08. Menambahkan node pada posisi awal:" << endl;
+    masukanNodeKeAwal("Apel", "Merah", 2.1, 13000, "Manis");
+    cetakSingleLinkedList(); // menampilkan node
+    /* merubah node di awal*/
+    cout << endl
+         << "09. Merubah node pada posisi awal:" << endl;
+    rubahDataNodePertama("Anggur", "Ungu", 1, 9000, "Manis");
+    cetakSingleLinkedList(); // menampilkan node
+    /* merubah node di awal*/
+    cout << endl
+         << "10. Merubah node pada posisi akhir:" << endl;
+    rubahDataNodeTerakhir("Mangga", "Kuning", 1.3, 8000, "Manis");
+    cetakSingleLinkedList(); // menampilkan node
 }
 
-void waktuLinkedList(){
+void waktuLinkedList()
+{
     auto start_time = chrono::high_resolution_clock::now();
     cetakLinkedList();
     auto end_time = chrono::high_resolution_clock::now();
     auto duration = chrono::duration_cast<chrono::microseconds>(end_time - start_time);
 
-    cout << "\nWaktu eksekusi linked list: " << duration.count() << " mikrodetik" << endl;
+    cout << "\nWaktu eksekusi linked list: " << duration.count() << " ms" << endl;
 }
 
-
 // fungsi array
-void buatElemen(string a, string b, float c, int d, string e) {
-    if (currentSize < MAX_SIZE) {
+void buatElemen(string a, string b, float c, int d, string e)
+{
+    if (currentSize < MAX_SIZE)
+    {
         nama[currentSize] = a;
         warna[currentSize] = b;
         berat[currentSize] = c;
@@ -235,9 +278,12 @@ void buatElemen(string a, string b, float c, int d, string e) {
     }
 }
 
-void masukanElemenKeAwal(string a, string b, float c, int d, string e) {
-    if (currentSize < MAX_SIZE) {
-        for (int i = currentSize; i > 0; i--) {
+void masukanElemenKeAwal(string a, string b, float c, int d, string e)
+{
+    if (currentSize < MAX_SIZE)
+    {
+        for (int i = currentSize; i > 0; i--)
+        {
             nama[i] = nama[i - 1];
             warna[i] = warna[i - 1];
             berat[i] = berat[i - 1];
@@ -253,8 +299,10 @@ void masukanElemenKeAwal(string a, string b, float c, int d, string e) {
     }
 }
 
-void masukanElemenKeAkhir(string a, string b, float c, int d, string e) {
-    if (currentSize < MAX_SIZE) {
+void masukanElemenKeAkhir(string a, string b, float c, int d, string e)
+{
+    if (currentSize < MAX_SIZE)
+    {
         nama[currentSize] = a;
         warna[currentSize] = b;
         berat[currentSize] = c;
@@ -264,8 +312,10 @@ void masukanElemenKeAkhir(string a, string b, float c, int d, string e) {
     }
 }
 
-void rubahDataElemenPertama(string a, string b, float c, int d, string e) {
-    if (currentSize > 0) {
+void rubahDataElemenPertama(string a, string b, float c, int d, string e)
+{
+    if (currentSize > 0)
+    {
         nama[0] = a;
         warna[0] = b;
         berat[0] = c;
@@ -274,8 +324,10 @@ void rubahDataElemenPertama(string a, string b, float c, int d, string e) {
     }
 }
 
-void rubahDataElemenTerakhir(string a, string b, float c, int d, string e) {
-    if (currentSize > 0) {
+void rubahDataElemenTerakhir(string a, string b, float c, int d, string e)
+{
+    if (currentSize > 0)
+    {
         int lastIndex = currentSize - 1;
         nama[lastIndex] = a;
         warna[lastIndex] = b;
@@ -285,9 +337,12 @@ void rubahDataElemenTerakhir(string a, string b, float c, int d, string e) {
     }
 }
 
-void hapusElemenPertama() {
-    if (currentSize > 0) {
-        for (int i = 0; i < currentSize - 1; i++) {
+void hapusElemenPertama()
+{
+    if (currentSize > 0)
+    {
+        for (int i = 0; i < currentSize - 1; i++)
+        {
             nama[i] = nama[i + 1];
             warna[i] = warna[i + 1];
             berat[i] = berat[i + 1];
@@ -298,55 +353,79 @@ void hapusElemenPertama() {
     }
 }
 
-void hapusElemenTerakhir() {
-    if (currentSize > 0) {
+void hapusElemenTerakhir()
+{
+    if (currentSize > 0)
+    {
         currentSize--;
     }
 }
 
-void cetakSingleArray() {
-    for (int i = 0; i < currentSize; i++) {
+void cetakSingleArray()
+{
+    for (int i = 0; i < currentSize; i++)
+    {
         cout << nama[i] << " >> ";
     }
     cout << "!!\n";
 }
 
-void cetakArray(){
-    cout << endl << "01. Membuat Elemen Pertama:" << endl;
+void cetakArray()
+{
+    cout << endl
+         << "01. Membuat Elemen Pertama:" << endl;
     buatElemen("Mangga", "Jingga", 1.1, 10000, "Manis");
-    cetakSingleArray(); 
-     
-    cout << endl << "02. Menambahkan elemen di awal:" << endl;
+    cetakSingleArray();
+
+    cout << endl
+         << "02. Menambahkan elemen di awal:" << endl;
     masukanElemenKeAwal("Pisang", "Kuning", 1.3, 8000, "Manis");
-    cetakSingleArray(); 
-    
-    cout << endl << "03. Menambahkan elemen di akhir:" << endl;
+    cetakSingleArray();
+
+    cout << endl
+         << "03. Menambahkan elemen di akhir:" << endl;
     masukanElemenKeAkhir("Apel", "Merah", 2.1, 13000, "Manis");
-    cetakSingleArray(); 
-    
-    cout << endl << "04. Menambahkan elemen di awal lagi:" << endl;
+    cetakSingleArray();
+
+    cout << endl
+         << "04. Menambahkan elemen di awal lagi:" << endl;
     masukanElemenKeAwal("Anggur", "Ungu", 1, 9000, "Manis");
-    cetakSingleArray(); 
-    
-    cout << endl << "05. Menghapus elemen di awal:" << endl;
+    cetakSingleArray();
+
+    cout << endl
+         << "05. Menghapus elemen di awal:" << endl;
     hapusElemenPertama();
     cetakSingleArray();
-     
-    cout << endl << "06. Menghapus elemen di akhir:" << endl;
-    hapusElemenTerakhir();
-    cetakSingleArray();
-    
-    cout << endl << "07. Menghapus elemen di akhir lagi:" << endl;
+
+    cout << endl
+         << "06. Menghapus elemen di akhir:" << endl;
     hapusElemenTerakhir();
     cetakSingleArray();
 
+    cout << endl
+         << "07. Menghapus elemen di akhir lagi:" << endl;
+    hapusElemenTerakhir();
+    cetakSingleArray();
+    cout << endl
+         << "08. Menambahkan elemen pada posisi awal:" << endl;
+    masukanElemenKeAwal("Apel", "Merah", 2.1, 13000, "Manis");
+    cetakSingleArray();
+    cout << endl
+         << "09. Merubah elemen pada posisi awal:" << endl;
+    rubahDataElemenPertama("Anggur", "Ungu", 1, 9000, "Manis");
+    cetakSingleArray();
+    cout << endl
+         << "10. Merubah elemen pada posisi akhir:" << endl;
+    rubahDataElemenTerakhir("Mangga", "Kuning", 1.3, 8000, "Manis");
+    cetakSingleArray();
 }
 
-void waktuArray(){
+void waktuArray()
+{
     auto start_time = chrono::high_resolution_clock::now();
     cetakArray();
     auto end_time = chrono::high_resolution_clock::now();
     auto duration = chrono::duration_cast<chrono::microseconds>(end_time - start_time);
 
-    cout << "\nWaktu eksekusi linked list: " << duration.count() << " mikrodetik" << endl;
+    cout << "\nWaktu eksekusi Array: " << duration.count() << " ms" << endl;
 }
