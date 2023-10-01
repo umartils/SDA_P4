@@ -189,11 +189,11 @@ void cetakSeluruhAtributNode()
     nodeSekarang = head;
     while (nodeSekarang != NULL)
     {
-        cout << "nama: " << nodeSekarang->nama << endl;
-        cout << "warna: " << nodeSekarang->warna << endl;
-        cout << "berat: " << nodeSekarang->berat << endl;
-        cout << "harga: " << nodeSekarang->harga << endl;
-        cout << "rasa: " << nodeSekarang->rasa << endl;
+        cout << "Nama: " << nodeSekarang->nama << endl;
+        cout << "Warna: " << nodeSekarang->warna << endl;
+        cout << "Berat: " << nodeSekarang->berat << endl;
+        cout << "Harga: " << nodeSekarang->harga << endl;
+        cout << "Rasa: " << nodeSekarang->rasa << endl;
         cout << endl;
         nodeSekarang = nodeSekarang->next;
     }
@@ -237,21 +237,24 @@ void cetakLinkedList()
     hapusNodeTerakhir();
     cetakSingleLinkedList();
 
-    /* menambahkan node di awal*/
     cout << endl
          << "08. Menambahkan node pada posisi awal:" << endl;
     masukanNodeKeAwal("Apel", "Merah", 2.1, 13000, "Manis");
-    cetakSingleLinkedList(); // menampilkan node
-    /* merubah node di awal*/
+    cetakSingleLinkedList();
+
     cout << endl
          << "09. Merubah node pada posisi awal:" << endl;
     rubahDataNodePertama("Anggur", "Ungu", 1, 9000, "Manis");
-    cetakSingleLinkedList(); // menampilkan node
-    /* merubah node di awal*/
+    cetakSingleLinkedList();
+
     cout << endl
          << "10. Merubah node pada posisi akhir:" << endl;
-    rubahDataNodeTerakhir("Mangga", "Kuning", 1.3, 8000, "Manis");
-    cetakSingleLinkedList(); // menampilkan node
+    rubahDataNodeTerakhir("Mangga", "Jingga", 1.1, 10000, "Manis");
+    cetakSingleLinkedList();
+
+    cout << endl
+         << "11. Mencetak seluruh atribut pada node:" << endl;
+    cetakSeluruhAtributNode();
 }
 
 void waktuLinkedList()
@@ -370,6 +373,20 @@ void cetakSingleArray()
     cout << "!!\n";
 }
 
+void cetakSeluruhAtributElemen()
+{
+    for (int i = 0; i < currentSize; i++)
+    {
+        cout << "Elemen ke-" << i + 1 << ":\n";
+        cout << "Nama: " << nama[i] << endl;
+        cout << "Warna: " << warna[i] << endl;
+        cout << "Berat: " << berat[i] << endl;
+        cout << "Harga: " << harga[i] << endl;
+        cout << "Rasa: " << rasa[i] << endl
+             << endl;
+    }
+}
+
 void cetakArray()
 {
     cout << endl
@@ -406,18 +423,25 @@ void cetakArray()
          << "07. Menghapus elemen di akhir lagi:" << endl;
     hapusElemenTerakhir();
     cetakSingleArray();
+
     cout << endl
          << "08. Menambahkan elemen pada posisi awal:" << endl;
     masukanElemenKeAwal("Apel", "Merah", 2.1, 13000, "Manis");
     cetakSingleArray();
+
     cout << endl
          << "09. Merubah elemen pada posisi awal:" << endl;
     rubahDataElemenPertama("Anggur", "Ungu", 1, 9000, "Manis");
     cetakSingleArray();
+
     cout << endl
          << "10. Merubah elemen pada posisi akhir:" << endl;
-    rubahDataElemenTerakhir("Mangga", "Kuning", 1.3, 8000, "Manis");
+    rubahDataElemenTerakhir("Mangga", "Jingga", 1.1, 10000, "Manis");
     cetakSingleArray();
+
+    cout << endl
+         << "11. Mencetak seluruh atribut pada elemen:" << endl;
+    cetakSeluruhAtributElemen();
 }
 
 void waktuArray()
